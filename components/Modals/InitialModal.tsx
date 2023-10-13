@@ -1,6 +1,7 @@
 'use client'
 
 import * as z from 'zod';
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -9,6 +10,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import FileUpload from '../FileUpload/FileUpload';
+import { useRouter } from 'next/navigation';
 
 const fromSchema = z.object({
     name: z.string().min(1, {
@@ -21,6 +23,7 @@ const fromSchema = z.object({
 
 const InitialModal = () => {
 
+    const router = useRouter();
     const [isMounted, setIsMounted] = useState(false);
 
     const form = useForm({
@@ -34,7 +37,11 @@ const InitialModal = () => {
     const isLoading = form.formState.isLoading;
 
     const onSubmit = async (values: z.infer<typeof fromSchema>) => {
-        console.log(values);
+        axios.post('/api/server',values);
+
+        form.reset();
+        router.refresh();
+        window.location.reload();
     }
 
     useEffect(() => {
