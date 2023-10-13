@@ -27,7 +27,7 @@ const SidebarItem = ({
     return (
         <SidebarActionsTooltip side='right' align='center' label={name}>
             <button
-                onClick={() => onClick}
+                onClick={onClick}
                 className='relative flex items-center group'
             >
                 <div className={cn(
