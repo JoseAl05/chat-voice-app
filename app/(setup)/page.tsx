@@ -3,6 +3,8 @@ import { db } from '@/lib/db';
 import { initialProfile } from '@/lib/initialProfile';
 import InitialModal from '@/components/Modals/InitialModal';
 
+/** In this page is rendered InitialModal component which has a Form to create a new server!. It fetch the servers and if there is no server, then the modal pop up. **/
+
 const SetupPage = async () => {
 
     const profile = await initialProfile();
