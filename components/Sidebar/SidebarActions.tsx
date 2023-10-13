@@ -2,12 +2,16 @@
 
 import { Plus } from 'lucide-react';
 import SidebarActionsTooltip from '../Tooltip/SidebarActionsTooltip';
+import { useModalStore } from '@/hooks/useModalStore';
 
 const SidebarActions = () => {
+
+    const { onOpen } = useModalStore();
+
     return (
         <div>
             <SidebarActionsTooltip side='right' align='center' label='Add Server'>
-                <button className='flex items-center group'>
+                <button className='flex items-center group' onClick={() => onOpen('createServer')}>
                     <div className='
                         flex
                         items-center
