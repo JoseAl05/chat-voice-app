@@ -30,7 +30,7 @@ export async function PATCH(
     console.log(server);
     return NextResponse.json(server);
   } catch (error) {
-    console.log('SERVER PATCH', error);
+    console.log('SERVER INVITE CODE PATCH', error);
     return new NextResponse('Internal server error', { status: 500 });
   }
 }
